@@ -8,23 +8,17 @@
         margin-bottom: 12px;
       "
     >
-      <!-- <img
-        src="https://images.gscplusmd.com/statics/staging/images/games/1007/SLOT/65.png"
-        alt="logo"
-        style="height: 40px"
-        @click="handleClick(logoState)"
-      /> -->
       <img
         :src="logoState.imageUrl"
         alt="logo"
-        style="height: 44px; width: 150px"
+        style="height: 40px"
         @click="handleClick(logoState)"
       />
     </header>
     <div
       class="banner card"
       style="
-        height: 80px;
+        height: 168px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -34,16 +28,11 @@
       "
     >
       <!-- 广告图 -->
-      <!-- <img
-        src="https://images.gscplusmd.com/statics/staging/images/games/1007/SLOT/65.png"
-        alt="logo"
-        style="width: 100%; height: 100%; object-fit: cover; cursor: pointer"
-        @click="handleClick(activeState)"
-      /> -->
       <img
         :src="logoState.imageUrl"
         alt="logo"
-        style="width: 100%; height: 100%; object-fit: cover; cursor: pointer"
+        class="logo"
+        style="width: 100%;  object-fit: cover; cursor: pointer"
         @click="handleClick(activeState)"
       />
     </div>
@@ -115,7 +104,7 @@ const activeState = reactive({
 
 async function fetchMeta() {
   const resp = await fetch(
-    apiUrl + "/official_website/app/adbanner/getActiveList"
+     "/official_website/app/adbanner/getActiveList"
   );
   const json = await resp.json();
   const list: ApiItem[] = (json?.data ?? []) as ApiItem[];
@@ -162,3 +151,12 @@ onMounted(() => {
   fetchMeta();
 });
 </script>
+
+<style lang="scss" scoped>
+.contaier{
+  .logo{
+    height: auto;
+    width: 100%;
+  }
+}
+</style>
