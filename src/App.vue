@@ -29,7 +29,7 @@
     >
       <!-- 广告图 -->
       <img
-        :src="logoState.imageUrl"
+        :src="activeState.imageUrl"
         alt="logo"
         class="logo"
         style="width: 100%;  object-fit: cover; cursor: pointer"
