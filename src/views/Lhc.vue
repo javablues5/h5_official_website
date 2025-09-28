@@ -40,7 +40,7 @@
           <div class="ball-no">{{ pad2(b.no) }}</div>
           <div class="ball-sx">{{ b.sx }}</div>
         </div>
-        <div class="op" style="margin-bottom: 20px">+</div>
+        <div class="op">+</div>
         <div class="ball special" :class="latest.special.bs">
           <div class="ball-no">{{ pad2(latest.special.no) }}</div>
           <div class="ball-sx">{{ latest.special.sx }}</div>
