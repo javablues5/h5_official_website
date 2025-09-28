@@ -83,7 +83,7 @@ import { ref, reactive, onMounted } from "vue";
 import Pc28 from "./views/Pc28.vue";
 import Pcnn from "./views/Pcnn.vue";
 import Lhc from "./views/Lhc.vue";
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
+const apiUrl = import.meta.env.VITE_API_BASES_URL;
 
 const active = ref<"pc28" | "pcnn" | "lhc">("pc28");
 
