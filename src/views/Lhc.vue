@@ -185,7 +185,7 @@ function selectYear(y: number) {
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 async function fetchHistory(year?: number) {
   const queryYear: number = year ?? new Date().getFullYear();
-  const json = await postJson(apiUrl+"/api/HistoryOpenInfo", {
+  const json = await postJson("/api/HistoryOpenInfo", {
     lotteryId: 2034,
     issueNum: queryYear,
   });
