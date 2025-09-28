@@ -182,10 +182,10 @@ function selectYear(y: number) {
   // 这里可以调用历史数据接口
   fetchHistory(y);
 }
-
+const apiUrl = import.meta.env.VITE_API_BASES_URL;
 async function fetchHistory(year?: number) {
   const queryYear: number = year ?? new Date().getFullYear();
-  const json = await postJson("/api/HistoryOpenInfo", {
+  const json = await postJson(apiUrl+"/api/HistoryOpenInfo", {
     lotteryId: 2034,
     issueNum: queryYear,
   });
