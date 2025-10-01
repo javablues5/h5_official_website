@@ -46,6 +46,7 @@
         PC28
       </div>
       <div
+        v-if="false"
         class="tab"
         :class="{ active: active === 'pcnn' }"
         @click="active = 'pcnn'"
