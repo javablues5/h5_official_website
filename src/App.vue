@@ -37,7 +37,7 @@
         @click="handleClick(activeState)"
       /> -->
       <swiper
-        style="width: 100%; height: 100%"
+        style="width: 100%; height: 168px;"
         :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }"
         loop
         :modules="[Autoplay,Navigation, Pagination, Scrollbar, A11y]"
