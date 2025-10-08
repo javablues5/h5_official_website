@@ -15,6 +15,7 @@
         @click="handleClick(logoState)"
       />
     </header>
+
     <div
       class="banner card"
       style="
@@ -28,13 +29,33 @@
       "
     >
       <!-- 广告图 -->
-      <img
+      <!-- <img
         :src="activeState.imageUrl"
         alt="logo"
         class="logo"
         style="width: 100%;  object-fit: cover; cursor: pointer"
         @click="handleClick(activeState)"
-      />
+      /> -->
+      <swiper
+        style="width: 100%; height: 100%"
+        :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }"
+        loop
+        :modules="[Autoplay,Navigation, Pagination, Scrollbar, A11y]"
+        :pagination="{ clickable: true }"
+      >
+        <swiper-slide
+          v-for="item in siwperData"
+          :key="item.id"
+          style="width: 100%; height: 100%"
+        >
+          <img
+            :src="item.imageUrl"
+            alt="logo"
+            style="width: 100%; object-fit: cover; cursor: pointer"
+            @click="handleClick(item)"
+          />
+        </swiper-slide>
+      </swiper>
     </div>
 
     <div class="tabs">
@@ -73,9 +94,16 @@ import { ref, reactive, onMounted } from "vue";
 import Pc28 from "./views/Pc28.vue";
 import Pcnn from "./views/Pcnn.vue";
 import Lhc from "./views/Lhc.vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import {Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 const apiUrl = import.meta.env.VITE_API_BASES_URL;
 
 const active = ref<"pc28" | "pcnn" | "lhc">("pc28");
+
+const siwperData = ref<any>([]);
 
 type ApiItem = {
   openNewWindow: string; //新窗口打开 0=否,1=是
@@ -105,7 +133,7 @@ const activeState = reactive({
 
 async function fetchMeta() {
   const resp = await fetch(
-     "/official_website/app/adbanner/getActiveList"
+    apiUrl + "/official_website/app/adbanner/getActiveList"
   );
   const json = await resp.json();
   const list: ApiItem[] = (json?.data ?? []) as ApiItem[];
@@ -124,6 +152,7 @@ async function fetchMeta() {
         break;
     }
   });
+  siwperData.value = list.filter((item) => item.position === "product_list");
 }
 function handleClick(item: ApiItem) {
   if (!item.linkUrl) return;
@@ -154,8 +183,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.contaier{
-  .logo{
+.contaier {
+  .logo {
     height: auto;
     width: 100%;
   }
