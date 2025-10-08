@@ -36,7 +36,7 @@
         alt="logo"
         class="logo"
         style="width: 100%; object-fit: cover; cursor: pointer"
-        @click="handleClick(activeState)"
+        @click="handleClick(item)"
       />
       <!-- <swiper
         style="width: 100%; height: 168px;"
