@@ -30,8 +30,22 @@
         <div class="num">{{ latest.numbers[2] }}</div>
         <div class="op">=</div>
         <div class="sum">{{ latest.sum }}</div>
-        <span class="tag red">{{ latest.size }}</span>
-        <span class="tag blue">{{ latest.oddEven }}</span>
+        <span
+          class="tag"
+          :class="{
+            red: ['大', '双'].includes(latest.size),
+            blue: ['小', '单'].includes(latest.size),
+          }"
+          >{{ latest.size }}</span
+        >
+        <span
+          class="tag"
+          :class="{
+            red: ['大', '双'].includes(latest.oddEven),
+            blue: ['小', '单'].includes(latest.oddEven),
+          }"
+          >{{ latest.oddEven }}</span
+        >
       </div>
     </div>
 

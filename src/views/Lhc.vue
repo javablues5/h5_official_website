@@ -42,7 +42,9 @@
         </div>
         <div class="op">+</div>
         <div class="ball special" :class="latest.special.bs">
-          <div class="ball-no">{{ pad2(latest.special.no) }}</div>
+          <div class="ball-no" :style="{ background: latest?.special?.bs }">
+            {{ pad2(latest.special.no) }}
+          </div>
           <div class="ball-sx">{{ latest.special.sx }}</div>
         </div>
       </div>
@@ -185,7 +187,7 @@ function selectYear(y: number) {
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 async function fetchHistory(year?: number) {
   const queryYear: number = year ?? new Date().getFullYear();
-  const json = await postJson("/api/HistoryOpenInfo", {
+  const json = await postJson(apiUrl + "/api/HistoryOpenInfo", {
     lotteryId: 2034,
     issueNum: queryYear,
   });
