@@ -294,13 +294,13 @@ onUnmounted(() => {
   margin-bottom: 4px;
 }
 .ball.red .ball-no {
-  background: #ef4444;
+  background: red;
 }
 .ball.blue .ball-no {
-  background: #3b82f6;
+  background: blue;
 }
 .ball.green .ball-no {
-  background: #10b981;
+  background: green;
 }
 .ball.special .ball-no {
   background: #f59e0b;
