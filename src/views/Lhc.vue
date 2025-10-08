@@ -38,14 +38,16 @@
           :class="b.bs"
         >
           <div class="ball-no">{{ pad2(b.no) }}</div>
-          <div class="ball-sx">{{ b.sx }}</div>
+          <div class="ball-sx">{{ zodiacMap[b.sx] ?? b.sx }}</div>
         </div>
         <div class="op">+</div>
         <div class="ball special" :class="latest.special.bs">
           <div class="ball-no" :style="{ background: latest?.special?.bs }">
             {{ pad2(latest.special.no) }}
           </div>
-          <div class="ball-sx">{{ latest.special.sx }}</div>
+          <div class="ball-sx">
+            {{ zodiacMap[latest.special.sx] ?? latest.special.sx }}
+          </div>
         </div>
       </div>
     </div>
@@ -94,7 +96,7 @@
                 :key="'r' + row.issue + 'm' + i"
               >
                 <div class="ball-no">{{ pad2(b.no) }}</div>
-                <div class="ball-sx">{{ b.sx }}</div>
+                <div class="ball-sx">{{ zodiacMap[b.sx] ?? b.sx }}</div>
               </div>
             </div>
           </td>
@@ -113,6 +115,20 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, onMounted, onUnmounted } from "vue";
+const zodiacMap: any = {
+  鼠: "鼠",
+  牛: "牛",
+  虎: "虎",
+  兔: "兔",
+  龍: "龙",
+  蛇: "蛇",
+  馬: "马",
+  羊: "羊",
+  猴: "猴",
+  鷄: "鸡",
+  狗: "狗",
+  豬: "猪",
+};
 type MetaResp = {
   code: number;
   data: {
@@ -213,7 +229,7 @@ async function fetchHistory(year?: number) {
 }
 
 function pad2(n: number) {
-  return n.toString().padStart(2, "0");
+  return n?.toString().padStart(2, "0");
 }
 
 function getTimeDiff(endTimeMs: number, nowMs: number) {
