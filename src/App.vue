@@ -18,6 +18,8 @@
 
     <div
       class="banner card"
+      v-for="item in siwperData"
+      :key="item.id"
       style="
         height: 168px;
         display: flex;
@@ -29,14 +31,14 @@
       "
     >
       <!-- 广告图 -->
-      <!-- <img
-        :src="activeState.imageUrl"
+      <img
+        :src="item.imageUrl"
         alt="logo"
         class="logo"
-        style="width: 100%;  object-fit: cover; cursor: pointer"
+        style="width: 100%; object-fit: cover; cursor: pointer"
         @click="handleClick(activeState)"
-      /> -->
-      <swiper
+      />
+      <!-- <swiper
         style="width: 100%; height: 168px;"
         :autoplay="{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }"
         loop
@@ -55,7 +57,7 @@
             @click="handleClick(item)"
           />
         </swiper-slide>
-      </swiper>
+      </swiper> -->
     </div>
 
     <div class="tabs">
@@ -94,11 +96,17 @@ import { ref, reactive, onMounted } from "vue";
 import Pc28 from "./views/Pc28.vue";
 import Pcnn from "./views/Pcnn.vue";
 import Lhc from "./views/Lhc.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import {Autoplay, Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+// import { Swiper, SwiperSlide } from "swiper/vue";
+// import {
+//   Autoplay,
+//   Navigation,
+//   Pagination,
+//   Scrollbar,
+//   A11y,
+// } from "swiper/modules";
 import "swiper/css";
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 const apiUrl = import.meta.env.VITE_API_BASES_URL;
 
 const active = ref<"pc28" | "pcnn" | "lhc">("pc28");
