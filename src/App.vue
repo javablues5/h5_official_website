@@ -21,7 +21,6 @@
       v-for="item in siwperData"
       :key="item.id"
       style="
-        height: 168px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -35,7 +34,7 @@
         :src="item.imageUrl"
         alt="logo"
         class="logo"
-        style="width: 100%; object-fit: cover; cursor: pointer"
+        style="width: 100%;  object-fit: cover; cursor: pointer"
         @click="handleClick(item)"
       />
       <!-- <swiper
@@ -193,8 +192,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .contaier {
   .logo {
-    height: auto;
     width: 100%;
+    height: 100%;
   }
 }
 </style>
