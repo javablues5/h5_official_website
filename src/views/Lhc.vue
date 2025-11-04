@@ -102,7 +102,7 @@
           </td>
 
           <td>
-            <div class="ball special" :class="row.special.bs">
+            <div class="ball" :class="row.special.bs">
               <div class="ball-no">{{ pad2(row.special.no) }}</div>
               <div class="ball-sx">{{ row.special.sx }}</div>
             </div>
@@ -293,17 +293,18 @@ onUnmounted(() => {
   font-weight: 500;
   margin-bottom: 4px;
 }
-.ball.red .ball-no {
-  background: red;
+
+.ball.special .ball-no {
+  background: #f59e0b;
 }
 .ball.blue .ball-no {
   background: blue;
 }
+.ball.red .ball-no {
+  background: red;
+}
 .ball.green .ball-no {
   background: green;
-}
-.ball.special .ball-no {
-  background: #f59e0b;
 }
 .ball-sx {
   font-size: 12px;
